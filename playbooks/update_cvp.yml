@@ -1,0 +1,63 @@
+---
+- name: Update Configlets
+  hosts: cvp
+  connection: local
+  gather_facts: no
+
+  collections:
+    - arista.cvp
+    - arista.avd
+
+# Device Inventory dictionary is stored in host_vars/cvp/devices_inventory.yml
+
+  tasks:
+
+    # Gathering CVP Facts
+    - name: "Refreshing facts from CVP {{ inventory_hostname }}"
+      tags: [ upload, full ]
+      cv_facts:
+      register: cvp_facts
+
+    # Upload configlets from a directory
+    - name: "Upload configlets to CVP {{ inventory_hostname }}"
+      tags: [ upload, full ]
+      import_role:
+          name: arista.avd.cvp_configlet_upload
+      vars:
+        configlet_directory: 'cvp_configlets'
+        file_extension: 'txt'
+        configlets_cvp_prefix: 'DC1'
+
+    # Need to refresh CVP facts after configlets have been uploaded on previous task
+    - name: "Refreshing CVP Facts"
+      tags: [ update, full ]
+      cv_facts:
+      register: cvp_facts
+
+    # Task will build/update Container Topology and Attach configlets to the Containers
+    - name: "Updating Container Topology & Attaching Configlets"
+      tags: [ update, full ]
+      cv_container:
+        cvp_facts: "{{ cvp_facts.ansible_facts }}"
+        topology: "{{ CVP_CONTAINERS }}"
+        mode: merge
+      register: CVP_CONTAINERS_RESULT
+
+    # Task will update Device configlet list and which container the device is connected
+    - name: "Updating Devices Configlets and Parent Container"
+      tags: [ update, full ]
+      cv_device:
+        devices: "{{ CVP_DEVICES }}"
+        cvp_facts: "{{ cvp_facts.ansible_facts }}"
+        configlet_mode: override
+      register: CVP_DEVICES_RESULT
+
+    # Reminder message just in case there are Tasks that need to be executed in CVP
+    # We do not automatically execute any tasks in CVP
+    - name: "Follow Up Message"
+      tags: [ always ]
+      debug:
+        msg: "If needed, manually create change control & execute any pending tasks in CVP to apply changes"
+
+
+

@@ -1,0 +1,16 @@
+!
+! Base Config for SW2
+!
+hostname SW2
+!
+vrf instance MGMT
+!
+interface Management1
+   description Management
+   vrf MGMT
+   ip address 192.168.1.245/24
+!
+ip route vrf MGMT 0.0.0.0/0 192.168.1.1
+!
+ip routing vrf MGMT
+!

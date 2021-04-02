@@ -1,0 +1,41 @@
+!
+daemon TerminAttr
+   exec /usr/bin/TerminAttr -ingestgrpcurl=192.168.1.248:9910 -cvcompression=gzip -ingestauth=key,magickey -smashexcludes=ale,flexCounter,hardware,kni,pulse,strata -ingestexclude=/Sysdb/cell/1/agent,/Sysdb/cell/2/agent -ingestvrf=MGMT -taillogs
+   no shutdown
+!
+event-monitor
+!
+service routing protocols model multi-agent
+!
+ip name-server vrf MGMT 192.168.1.246
+!
+ntp server vrf MGMT 192.168.1.246 iburst maxpoll 3
+ntp server vrf MGMT time.google.com iburst maxpoll 3
+!
+radius-server host 192.168.1.205 key 7 070E33455D1D18544541
+!
+aaa group server radius RADIUS-SVRS
+   server 192.168.1.205
+!
+!
+spanning-tree mode rapid-pvst
+!
+aaa authentication login default group RADIUS-SVRS local
+aaa authorization exec default group RADIUS-SVRS local
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$VjNhzmCAxU1sUoTD$MLREvtwRBkraoOII322Yo5NTXSrSRpzsAFcq2JcW5GZOtQF4M3hpJZS1DeO0o/zuvY66JffJD0isnW0Tj6fxH/
+username cvpadmin privilege 15 secret sha512 $6$PpXEtQeyPZGN34LR$hZ8n2FOw/6qBLFZPXJunTDwOVN9NIsLmNTlVe7d4QZq82G3iDYxmFoM5umGDqlLZQQTebCQWBrHFbse8fFmse1
+username mthiel privilege 15 role network-admin secret sha512 $6$DwhRNpi.f/ZhO75X$8OBazJAi.q83WBWIwPLVSM1zgk7pFWST4XXVHUSzTfv3szZtwiOHiwhKIUclQ93gtnSoB7WIQTSpDMPNs2Kzl1
+!
+clock timezone EST5EDT
+!
+vrf instance MGMT
+!
+management api http-commands
+   no shutdown
+   !
+   vrf MGMT
+      no shutdown
+!

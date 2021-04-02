@@ -1,0 +1,6 @@
+all:
+  children:
+    CVP_SERVERS:
+      hosts:
+        cvp:
+          ansible_host: 192.168.1.248

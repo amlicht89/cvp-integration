@@ -1,0 +1,10 @@
+banner motd
+
+---------------------------------------------------------
+Welcome to The Network.
+Devices are managed by CVP.  CLI Changes will be removed.
+
+YOU HAVE BEEN WARNED!!!  PROCEED AT YOUR OWN RISK!!!
+---------------------------------------------------------
+
+EOF

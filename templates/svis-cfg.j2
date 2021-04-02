@@ -1,0 +1,8 @@
+{# Create Common SVIs for Leafs #}
+!
+{% for k, v in SVIs.items() %}
+interface vlan {{ k }}
+   description {{ v['name'] }}
+   ip address virtual {{ v['virtual_prefix'] }}
+{% endfor%}
+!

@@ -1,0 +1,24 @@
+---
+# ansible-playbook create_base_configs.yml
+- name: Create Base Configlets from CSV data
+  gather_facts: no
+  hosts: localhost
+
+  vars_files:
+    - ../datafiles/svis.yml
+
+  tasks:
+
+  - name: "Reading in CSV file"
+    read_csv:
+      path: ../datafiles/devices.csv
+    register: switches
+
+  - name: Create Base Config for each device in CSV File
+    template: src=../templates/base-cfg.j2 dest=../cvp_configlets/{{ switch.hostname }}-BASE.txt
+    loop: "{{ switches.list }}"
+    loop_control:
+      loop_var: switch
+
+  - name: Create Common SVIs for Leafs
+    template: src=../templates/svis-cfg.j2 dest=../cvp_configlets/SVIs.txt

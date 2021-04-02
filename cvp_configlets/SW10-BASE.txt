@@ -1,0 +1,16 @@
+!
+! Base Config for SW10
+!
+hostname SW10
+!
+vrf instance MGMT
+!
+interface Management1
+   description Management
+   vrf MGMT
+   ip address 192.168.1.253/24
+!
+ip route vrf MGMT 0.0.0.0/0 192.168.1.1
+!
+ip routing vrf MGMT
+!

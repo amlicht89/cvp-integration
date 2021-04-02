@@ -1,0 +1,16 @@
+!
+! Base Config for {{ switch.hostname }}
+!
+hostname {{ switch.hostname }}
+!
+vrf instance MGMT
+!
+interface Management1
+   description Management
+   vrf MGMT
+   ip address {{ switch.mgmt_ip }}/{{ switch.netmask }}
+!
+ip route vrf MGMT 0.0.0.0/0 {{ switch.gateway }}
+!
+ip routing vrf MGMT
+!

@@ -1,0 +1,11 @@
+---
+SVIs:
+  100:
+    name: Audio_Network
+    virtual_prefix: 10.10.100.1/24
+  101:
+    name: Voice_Network
+    virtual_prefix: 10.10.101.1/24
+  102:
+    name: Corporate_Network
+    virtual_prefix: 10.10.102.1/24

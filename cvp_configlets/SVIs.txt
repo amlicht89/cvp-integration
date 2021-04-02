@@ -1,0 +1,11 @@
+!
+interface vlan 100
+   description Audio_Network
+   ip address virtual 10.10.100.1/24
+interface vlan 101
+   description Voice_Network
+   ip address virtual 10.10.101.1/24
+interface vlan 102
+   description Corporate_Network
+   ip address virtual 10.10.102.1/24
+!

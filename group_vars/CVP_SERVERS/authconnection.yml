@@ -1,0 +1,10 @@
+---
+ansible_connection: httpapi
+ansible_network_os: eos
+ansible_user: cvpadmin
+ansible_password: cvpadmin123
+ansible_become: yes
+ansible_become_method: enable
+ansible_httpapi_use_ssl: true
+ansible_httpapi_validate_certs: false
+ansible_python_interpreter: $(which python3)

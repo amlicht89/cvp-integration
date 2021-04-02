@@ -1,0 +1,44 @@
+###############################################################
+#
+# Container Topology:
+# Add new section for each container you want to manage configlets
+# Required fields:
+#  Key:
+#    name:
+#    parent_container:
+#    configlets: [list]
+#
+###############################################################
+
+CVP_CONTAINERS:
+  STAGING:
+    parent_container: Tenant
+    configlets:
+      - DC1_GLOBAL_COMMON
+      - DC1_ALIASES
+      - DC1_VLANS
+      - DC1_VARP-MAC
+      - DC1_MOTD_BANNER
+  DEMO:
+    parent_container: Tenant
+    configlets:
+      - DC1_GLOBAL_COMMON
+      - DC1_ALIASES
+      - DC1_VLANS
+      - DC1_VARP-MAC
+      - DC1_MOTD_BANNER
+  # COMPANY_XYZ:
+  #   parent_container: Tenant
+  #   configlets:
+  #     - DC1_GLOBAL_COMMON
+  #     - DC1_ALIASES
+  #     - DC1_VARP-MAC
+  #     - DC1_MOTD_BANNER
+  # HQ:
+  #   parent_container: COMPANY_XYZ
+  #   configlets:
+  #     - DC1_VLANS
+  # DR:
+  #   parent_container: COMPANY_XYZ
+  #   configlets:
+  #     - DC1_VLANS
