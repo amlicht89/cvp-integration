@@ -1,7 +1,7 @@
 !
 ! Base Config for SW10
 !
-hostname SW10
+hostname DC1-SW10
 !
 vrf instance MGMT
 !

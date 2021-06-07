@@ -1,7 +1,7 @@
 !
 ! Base Config for SW9
 !
-hostname SW9
+hostname DC1-SW9
 !
 vrf instance MGMT
 !

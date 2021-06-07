@@ -1,7 +1,7 @@
 !
 ! Base Config for SW7
 !
-hostname SW7
+hostname DC1-SW7
 !
 vrf instance MGMT
 !

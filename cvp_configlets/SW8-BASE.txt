@@ -1,7 +1,7 @@
 !
 ! Base Config for SW8
 !
-hostname SW8
+hostname DC1-SW8
 !
 vrf instance MGMT
 !

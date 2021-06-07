@@ -1,7 +1,7 @@
 !
 ! Base Config for SW3
 !
-hostname SW3
+hostname DC1-SW3
 !
 vrf instance MGMT
 !

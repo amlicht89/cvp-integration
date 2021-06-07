@@ -1,7 +1,7 @@
 !
 ! Base Config for SW4
 !
-hostname SW4
+hostname DC1-SW4
 !
 vrf instance MGMT
 !

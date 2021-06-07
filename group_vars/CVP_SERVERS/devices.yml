@@ -13,11 +13,11 @@
 ###############################################################
 
 CVP_DEVICES:
-  - fqdn: DC1-SW1.thielnet.com
+  - fqdn: DC1-SW1
     parentContainerName: DC1
     configlets:
       - DC1_SW1-BASE
-  - fqdn: DC1-SW2.thielnet.com
+  - fqdn: DC1-SW2
     parentContainerName: DC1
     configlets:
       - DC1_SW2-BASE
