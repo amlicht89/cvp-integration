@@ -15,7 +15,7 @@ CVP_CONTAINERS:
     parentContainerName: Tenant
     configlets:
       - DC1_GLOBAL_COMMON
-  DC2:
+  DC1:
     parentContainerName: Tenant
     configlets:
       - DC1_GLOBAL_COMMON

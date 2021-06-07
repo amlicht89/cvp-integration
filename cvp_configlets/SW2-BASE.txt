@@ -8,9 +8,9 @@ vrf instance MGMT
 interface Management1
    description Management
    vrf MGMT
-   ip address 192.168.1.245/24
+   ip address 10.1.1.129/24
 !
-ip route vrf MGMT 0.0.0.0/0 192.168.1.1
+ip route vrf MGMT 0.0.0.0/0 10.1.1.1
 !
 ip routing vrf MGMT
 !
