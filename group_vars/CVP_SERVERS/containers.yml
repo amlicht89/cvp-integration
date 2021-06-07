@@ -12,21 +12,13 @@
 
 CVP_CONTAINERS:
   STAGING:
-    parent_container: Tenant
+    parentContainerName: Tenant
     configlets:
       - DC1_GLOBAL_COMMON
-      - DC1_ALIASES
-      - DC1_VLANS
-      - DC1_VARP-MAC
-      - DC1_MOTD_BANNER
-  DEMO:
-    parent_container: Tenant
+  DC2:
+    parentContainerName: Tenant
     configlets:
       - DC1_GLOBAL_COMMON
-      - DC1_ALIASES
-      - DC1_VLANS
-      - DC1_VARP-MAC
-      - DC1_MOTD_BANNER
   # COMPANY_XYZ:
   #   parent_container: Tenant
   #   configlets:
