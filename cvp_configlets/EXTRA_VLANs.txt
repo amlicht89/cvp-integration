@@ -1,4 +1,0 @@
-vlan 2000
-  name VLAN_2000
-vlan 2001
-  name VLAN_2001

@@ -37,6 +37,11 @@
         state: present
       register: CVP_DEVICES_RESULT
 
+    - name: Execute all tasks registered in cvp_configlets variable
+      tags: [execute]
+      cv_task_v3:
+        tasks: "{{ cvp_configlets.taskIds }}"
+
     # Reminder message just in case there are Tasks that need to be executed in CVP
     # We do not automatically execute any tasks in CVP
     - name: "Follow Up Message"
