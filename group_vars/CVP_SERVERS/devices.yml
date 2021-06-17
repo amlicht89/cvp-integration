@@ -18,8 +18,10 @@ CVP_DEVICES:
     configlets:
       - DC1_SW1-BASE
       - DC1_SW1-MLAG
+      - DC1_SW1-PORTCHANNELS
   - fqdn: DC1-SW2
     parentContainerName: DC1
     configlets:
       - DC1_SW2-BASE
       - DC1_SW2-MLAG
+      - DC1_SW2-PORTCHANNELS

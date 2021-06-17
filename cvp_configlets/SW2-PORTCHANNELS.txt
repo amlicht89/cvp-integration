@@ -1,0 +1,16 @@
+!
+! SW2 PORT-CHANNEL's
+!
+vlan 10
+!
+interface Vlan10
+   ip address 10.10.10.3/24
+   ip virtual-router address 10.10.10.1
+!
+interface Port-Channel47
+   switchport access vlan 10
+   mlag 47
+!
+interface Ethernet47
+   channel-group 47 mode active
+!

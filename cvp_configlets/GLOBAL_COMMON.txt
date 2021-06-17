@@ -5,6 +5,8 @@ daemon TerminAttr
 !
 event-monitor
 !
+ip virtual-router mac-address aa:aa:bb:bb:cc:cc
+!
 service routing protocols model multi-agent
 !
 ip name-server vrf MGMT 192.168.1.246

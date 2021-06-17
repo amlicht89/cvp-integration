@@ -5,6 +5,9 @@ hostname DC1-SW2
 !
 vrf instance MGMT
 !
+interface Loopback1
+   ip address 1.1.1.2/32
+!
 interface Management1
    description Management
    vrf MGMT
