@@ -1,0 +1,26 @@
+ip routing
+!
+vlan 4093
+   name iBGP-Peering
+!
+interface Vlan4093
+   ip address 10.0.0.2/30
+!
+ip prefix-list PL-LOOPBACKS
+   seq 10 permit 1.1.1.0/24 le 32
+!
+ip prefix-list PL-UNDERLAY
+   seq 10 permit 10.0.0.0/24 ge 30
+!
+route-map RM-CONNECTED permit 10
+   match ip address prefix-list PL-LOOPBACKS
+!
+route-map RM-CONNECTED permit 20
+   match ip address prefix-list PL-UNDERLAY
+!
+router bgp 65100
+   router-id 1.1.1.2
+   neighbor 10.0.0.1 remote-as 65100
+   neighbor 10.0.0.1 maximum-routes 12000
+   redistribute connected route-map RM-CONNECTED
+!

@@ -1,6 +1,9 @@
 vlan 4094
    trunk group MLAGPEER
 !
+vlan 4093
+   name iBGP-Peering
+!
 no spanning-tree vlan-id 4094
 !
 interface Port-Channel2000
