@@ -22,12 +22,12 @@
         file_extension: 'txt'
         configlets_cvp_prefix: 'DC1'
 
-    # Task will build/update Container Topology and Attach configlets to the Containers
-    - name: "Updating Container Topology & Attaching Configlets"
-      tags: [ update, full ]
-      cv_container_v3:
-        topology: "{{ CVP_CONTAINERS }}"
-      register: CVP_CONTAINERS_RESULT
+    # # Task will build/update Container Topology and Attach configlets to the Containers
+    # - name: "Updating Container Topology & Attaching Configlets"
+    #   tags: [ update, full ]
+    #   cv_container_v3:
+    #     topology: "{{ CVP_CONTAINERS }}"
+    #   register: CVP_CONTAINERS_RESULT
 
     # Task will update Device configlet list and which container the device is connected
     - name: "Updating Devices Configlets and Parent Container"
@@ -40,7 +40,7 @@
     - name: Execute all tasks registered in cvp_configlets variable
       tags: [execute]
       cv_task_v3:
-        tasks: "{{ cvp_configlets.taskIds }}"
+        tasks: "{{ CVP_DEVICES_RESULT.taskIds }}"
 
     # Reminder message just in case there are Tasks that need to be executed in CVP
     # We do not automatically execute any tasks in CVP
