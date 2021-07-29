@@ -1,5 +1,5 @@
 ---
-- name: Update Configlets
+- name: Automatically Onboard ZTP Devices
   hosts: cvp
   connection: local
   gather_facts: no
@@ -7,8 +7,6 @@
   collections:
     - arista.cvp
     - arista.avd
-
-# Device Inventory dictionary is stored in host_vars/cvp/devices_inventory.yml
 
   tasks:
 
@@ -41,13 +39,6 @@
       tags: [execute]
       cv_task_v3:
         tasks: "{{ CVP_DEVICES_RESULT.taskIds }}"
-
-    # # Reminder message just in case there are Tasks that need to be executed in CVP
-    # # We do not automatically execute any tasks in CVP
-    # - name: "Follow Up Message"
-    #   tags: [ always ]
-    #   debug:
-    #     msg: "If needed, manually create change control & execute any pending tasks in CVP to apply changes"
 
 
 
