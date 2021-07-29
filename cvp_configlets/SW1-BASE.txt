@@ -1,16 +1,19 @@
 !
 ! Base Config for SW1
 !
-hostname SW1
+hostname DC1-SW1
 !
 vrf instance MGMT
+!
+interface Loopback1
+   ip address 1.1.1.1/32
 !
 interface Management1
    description Management
    vrf MGMT
-   ip address 192.168.1.244/24
+   ip address 10.1.1.128/24
 !
-ip route vrf MGMT 0.0.0.0/0 192.168.1.1
+ip route vrf MGMT 0.0.0.0/0 10.1.1.1
 !
 ip routing vrf MGMT
 !

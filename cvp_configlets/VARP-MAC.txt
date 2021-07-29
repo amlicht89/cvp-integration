@@ -1,1 +1,0 @@
-ip virtual-router mac-address aa:aa:bb:bb:cc:cc
