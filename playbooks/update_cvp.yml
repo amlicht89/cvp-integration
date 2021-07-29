@@ -42,12 +42,12 @@
       cv_task_v3:
         tasks: "{{ CVP_DEVICES_RESULT.taskIds }}"
 
-    # Reminder message just in case there are Tasks that need to be executed in CVP
-    # We do not automatically execute any tasks in CVP
-    - name: "Follow Up Message"
-      tags: [ always ]
-      debug:
-        msg: "If needed, manually create change control & execute any pending tasks in CVP to apply changes"
+    # # Reminder message just in case there are Tasks that need to be executed in CVP
+    # # We do not automatically execute any tasks in CVP
+    # - name: "Follow Up Message"
+    #   tags: [ always ]
+    #   debug:
+    #     msg: "If needed, manually create change control & execute any pending tasks in CVP to apply changes"
 
 
 
